@@ -1,0 +1,62 @@
+﻿namespace TCA_VMS.Models
+{
+    public class User
+    {
+        public int User_Id { get; set; }
+        public int Base_Id { get; set; }
+        public int UserType_Id { get; set; }
+        public string User_Name { get; set; }
+        public string User_Number { get; set; }
+        public string User_Last_Name { get; set; }
+        public string UserName { get; set; }
+        public string User_Email { get; set; }
+        public string User_Password { get; set; }
+        public bool User_Status { get; set; }
+        public DateTime User_Creation_Date { get; set; }
+        public string User_Token { get; set; }
+        public string Base_Name { get; set; }
+        public string UserType_Name { get; set; }
+
+        public class UserLogin
+        {
+            public string UserName { get; set; }
+            public string User_Password { get; set; }
+        }
+
+        public class UserPost
+        {
+            public int Base_Id { get; set; }
+            public int UserType_Id { get; set; }
+            public string User_Name { get; set; }
+            public string User_Number { get; set; }
+            public string User_Last_Name { get; set; }
+            public string UserName { get; set; }
+            public string User_Email { get; set; }
+            public string User_Password { get; set; }
+            public string User_Logged { get; set; }
+
+        }
+
+        public class UserPut
+        {
+            public int User_Id { get; set; }
+            public int Base_Id { get; set; }
+            public int UserType_Id { get; set; }
+            public string User_Name { get; set; }
+            public string User_Number { get; set; }
+            public string User_Last_Name { get; set; }
+            public string UserName { get; set; }
+            public string User_Email { get; set; }
+            public string User_Password { get; set; }
+            public string User_Logged { get; set; }
+
+        }
+
+        public class UserStatus
+        {
+            public int User_Id { get; set; }
+            public bool User_Status { get; set; }
+            public string User_Logged { get; set; }
+        }
+    }
+}
