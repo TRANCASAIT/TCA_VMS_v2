@@ -1311,7 +1311,7 @@ namespace TCA_VMS.Models.DAO
         #endregion
 
         #region VisitorsReport
-        public static Result StoreVisitorsReport(VisitorsReportPost _visitorsReport)
+        public static Result StoreVisitorsReport(VisitorsReportPost _visitorsReport, string path)
         {
             Result result = new Result();
             var spOption = 1;
@@ -1320,15 +1320,18 @@ namespace TCA_VMS.Models.DAO
                 try
                 {
                     bl.AddParam("@SpOption", spOption)
-                      .AddParam("@VisitorsReport_Name", _visitorsReport.VisitorsReport_Name)//
-                      .AddParam("@VisitorsReport_LastName", _visitorsReport.VisitorsReport_LastName)//
-                      .AddParam("@VisitorsReport_Subject", _visitorsReport.VisitorsReport_Subject)//
+                      .AddParam("@VisitorsReport_Name", _visitorsReport.VisitorsReport_Name!)//
+                      .AddParam("@VisitorsReport_LastName", _visitorsReport.VisitorsReport_LastName!)//
+                      .AddParam("@VisitorsReport_Subject", _visitorsReport.VisitorsReport_Subject!)//
                       .AddParam("@VisitorsReport_RecievedBy", _visitorsReport.VisitorsReport_RecievedBy)//
-                      .AddParam("@VisitorsReport_Photo", _visitorsReport.VisitorsReport_Photo)//
+                      .AddParam("@VisitorsReport_Photo", path!)//
+                      .AddParam("@VisitorsReport_Photo_Check", _visitorsReport.VisitorsReport_Photo_Check)//
                       .AddParam("@VisitorsReport_Laptop", _visitorsReport.VisitorsReport_Laptop)//
-                      .AddParam("@VisitorsReport_Laptop_Brand", _visitorsReport.VisitorsReport_Laptop_Brand)
-                      .AddParam("@VisitorsReport_Laptop_Serial_Number", _visitorsReport.VisitorsReport_Laptop_Serial_Number)
-                      .AddParam("@User_Logged", _visitorsReport.User_Logged)
+                      .AddParam("@VisitorsReport_Laptop_Brand", _visitorsReport.VisitorsReport_Laptop_Brand!)
+                      .AddParam("@VisitorsReport_Laptop_Serial_Number", _visitorsReport.VisitorsReport_Laptop_Serial_Number!)
+                      .AddParam("@User_Logged", _visitorsReport.User_Logged!)
+                      .AddParam("@VisitorsReport_Tools", _visitorsReport.VisitorsReport_Tools)
+                      .AddParam("@VisitorsReport_Tools_Description", _visitorsReport.VisitorsReport_Tools_Description!)
                       .AddParam("@Company_Id", _visitorsReport.Company_Id)//
                       .AddParam("@IDType_Id", _visitorsReport.IDType_Id)//
                       .AddParam("@VisitorType_Id", _visitorsReport.VisitorType_Id)//
@@ -1345,7 +1348,7 @@ namespace TCA_VMS.Models.DAO
                     else
                     {
                         result.State = Convert.ToInt32(bl.GetParamValue("@StatusOut"));
-                        result.Message = bl.GetParamValue("@MessageOut").ToString();
+                        result.Message = bl.GetParamValue("@MessageOut").ToString()!;
                     }
                 }
                 catch (SqlException ex)
